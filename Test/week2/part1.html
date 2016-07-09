@@ -1,0 +1,30 @@
+<html>
+    <body>
+        <script>
+            var finished = false;
+            var guesses = 0;
+            var target;
+            var guess_input;
+            
+            var colors = ["blue", "cyan", "gold", "green", "magenta", "orange", "red", "white", "yellow"];
+                       
+            var target_index = Math.random() * 9;
+            target_index = Math.floor(target_index);
+            target = colors[target_index];
+            alert(target);
+            
+         function do_game() {       
+            while(!finished) {
+                guess_input = prompt("I am thinking of one of these colors:\n\nblue, cyan, gold, green, magenta, orange, red, white, yellow\n\nWhat color am I thinking of?");
+                guesses+=1;
+                if (guess_input == target){
+                    finished = true;
+                }
+            }
+          }
+do_game();
+            
+        </script>
+    
+    </body>
+</html>

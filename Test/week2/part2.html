@@ -1,0 +1,50 @@
+<html>
+    <body>
+        <script>
+            var finished = false;
+            var guesses = 0;
+            var target;
+            var guess_input;
+            
+            var colors = ["blue", "cyan", "gold", "green", "magenta", "orange", "red", "white", "yellow"];
+                       
+            var target_index = Math.random() * 9;
+            target_index = Math.floor(target_index);
+            target = colors[target_index];
+           
+            function do_game() { 
+            while(!finished) {
+                guess_input = prompt("I am thinking of one of these colors:\n\nblue, cyan, gold, green, magenta, orange, red, white, yellow\n\nWhat color am I thinking of?");
+                guesses+=1;
+                finished = check_guess();
+            }
+            }
+            
+                function check_guess() {
+                    if (colors.indexOf(guess_input) == -1){
+                        alert("Sorry, I dont recognize your color.\n\nPlease try again.");
+                        return false;
+                    }
+                    if (colors.indexOf(guess_input) > target_index){
+                        alert("Sorry, your guess is not correct!\n\nHint:your color is alphabetically higher than mine.\n\nPlease try again.")
+                        return false;
+                    }
+                    if (colors.indexOf(guess_input) < target_index){
+                        alert("Sorry, your guess is not correct!\n\nHint:your color is alphabetically lower than mine.\n\nPlease try again.")
+                        return false;
+                    }
+                    if (colors.indexOf(guess_input) == target_index){
+                        myBody = document.getElementsByTagName("body")[0];
+                        myBody.style.background = target;
+                        alert("Congratulations! You have guessed the color!\n\nIt took you " + guesses + " guesses to finish the game!\n\nYou can see the colour in the background.")
+                        return true;
+                    }
+                }
+            
+            do_game();
+                
+            
+        </script>
+    
+    </body>
+</html>
